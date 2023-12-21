@@ -78,12 +78,12 @@ const DashboardHome = () => {
                                 <h3 className="text-center py-2 font-semibold text-lg bg-blue-600 text-white">
                                     {sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1)}
                                 </h3>
-                                <Droppable droppableId={sectionKey} key={sectionKey}>
+                                <Droppable droppableId={sectionKey} key={sectionKey} >
                                     {(provided) => (
                                         <ul
                                             {...provided.droppableProps}
                                             ref={provided.innerRef}
-                                            className="space-y-4"
+                                            className="space-y-4 min-h-screen"
                                         >
                                             {taskSections[sectionKey].map((task, index) => (
                                                 <Draggable

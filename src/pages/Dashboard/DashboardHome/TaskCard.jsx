@@ -4,11 +4,48 @@ import { FcHighPriority } from "react-icons/fc";
 import { FcMediumPriority } from "react-icons/fc";
 import { FcLowPriority } from "react-icons/fc";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import Swal from 'sweetalert2';
+import useAxios from '../../../hooks/useAxios';
 
 
 
-const TaskCard = ({ task }) => {
-    const { title, deadline, priority, description } = task;
+const TaskCard = ({ task, refetch }) => {
+    const { title, deadline, priority, description, _id } = task;
+
+    const axiosInstance = useAxios();
+
+    const handleDeleteTask = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axiosInstance.delete(`/api/task?id=${_id}`)
+                    .then(res => {
+
+                        if (res.data?.deletedCount > 0) {
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                text: "The task has been deleted.",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            refetch();
+                        }
+                    })
+
+
+
+            }
+        });
+    }
 
 
 
@@ -31,7 +68,7 @@ const TaskCard = ({ task }) => {
 
         <div className='text-lg flex items-center gap-4 mt-3'>
             <button> <FaEdit /></button>
-            <button className='text-red-600'> <FaTrash /></button>
+            <button onClick={handleDeleteTask} className='text-red-600'> <FaTrash /></button>
         </div>
     </div>
 }
