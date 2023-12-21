@@ -1,17 +1,41 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import useAxios from "../../../hooks/useAxios";
+import { useNavigate } from 'react-router-dom';
+
+import { UserContext } from '../../../context/AuthProvider';
+
+import Swal from 'sweetalert2';
 
 
 
 const NewTask = () => {
 
+    const { user } = useContext(UserContext);
+
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const [priority, setPriority] = useState('');
-
+    const navigate = useNavigate();
+    const axiosInstance = useAxios();
 
 
     const onSubmit = (data) => {
+        axiosInstance.post("/api/task", { ...data, email: user?.email, status: "todo" })
+            .then(res => {
+                if (res.data?._id) {
+                    Swal.fire({
+                        position: "Center",
+                        icon: "success",
+                        title: "Task added successfully!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate("/");
+                    reset();
+
+                }
+            })
 
     }
 

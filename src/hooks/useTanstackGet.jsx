@@ -5,7 +5,7 @@ const useTanstackGet = (queryKey, url) => {
     const axiosInstance = useAxios();
 
 
-    const { isLoading, error, data } = useQuery({
+    const { isLoading, error, data, refetch } = useQuery({
         queryKey: queryKey,
         queryFn: async () => {
             const result = await axiosInstance.get(url);
@@ -15,7 +15,7 @@ const useTanstackGet = (queryKey, url) => {
     });
 
 
-    return { isLoading, error, data }
+    return { isLoading, error, data, refetch }
 }
 
 export default useTanstackGet
