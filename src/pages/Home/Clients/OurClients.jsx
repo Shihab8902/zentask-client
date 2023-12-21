@@ -1,6 +1,7 @@
 import useTanstackGet from "../../../hooks/useTanStackGet"
 import ClientCard from "./ClientCard";
 
+
 const OurClients = () => {
 
     const { data, isLoading } = useTanstackGet(["getClients"], `/api/clients`);
