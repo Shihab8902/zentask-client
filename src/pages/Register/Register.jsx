@@ -19,11 +19,11 @@ import Swal from 'sweetalert2';
 const Register = () => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-
-    const navigate = useNavigate();
     const imageHostingAPIKey = import.meta.env.VITE_IMAGE_HOSTING_API_KEY;
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [isSigningUp, setIsSigningUp] = useState(false);
+
+    const navigate = useNavigate();
 
     const { createUser } = useContext(UserContext);
 

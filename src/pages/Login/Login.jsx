@@ -15,7 +15,7 @@ import Swal from "sweetalert2";
 
 const Login = () => {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
@@ -41,6 +41,7 @@ const Login = () => {
                     });
                     reset();
                     navigate("/");
+
                 }
             })
             .catch(error => {
@@ -67,6 +68,7 @@ const Login = () => {
                         timer: 1500
                     });
                     navigate("/");
+
 
                 }
             })
