@@ -64,7 +64,7 @@ const DashboardHome = () => {
 
 
     return (
-        <div>
+        <div className='mb-10'>
             <h3 className="text-center mt-10 text-3xl font-semibold">My Tasks</h3>
             <p className="text-center text-gray-400 mt-4 text-sm">
                 Drag into different sections for organizing them.
@@ -72,7 +72,7 @@ const DashboardHome = () => {
 
             {
                 tasks?.length > 0 ? <DragDropContext onDragEnd={onDragEnd}>
-                    <div className="grid lg:grid-cols-3 gap-6 mt-10 ml-5">
+                    <div className="grid lg:grid-cols-3 gap-6 mt-10">
                         {Object.keys(taskSections).map((sectionKey) => (
                             <div key={sectionKey} className='border-2 min-h-screen '>
                                 <h3 className="text-center py-2 font-semibold text-lg bg-blue-600 text-white">

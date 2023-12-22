@@ -9,6 +9,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Dashboard from '../layouts/Dashboard';
 import NewTask from '../pages/Dashboard/New Task/NewTask';
 import DashboardHome from '../pages/Dashboard/DashboardHome/DashboardHome';
+import EditTask from '../pages/Dashboard/DashboardHome/EditTask';
 
 
 
@@ -50,6 +51,10 @@ const CustomBrowserRouter = () => {
                 {
                     path: "/new",
                     element: <NewTask />
+                },
+                {
+                    path: "/edit",
+                    element: <EditTask />
                 }
             ]
         }
