@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const axiosInstance = axios.create({
-    baseURL: "http://localhost:9000"
+    baseURL: "https://zentask-steel.vercel.app"
 });
 
 const useAxios = () => {
